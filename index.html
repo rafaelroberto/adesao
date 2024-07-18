@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Clientes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Etapa 1: Login -->
+        <section id="login">
+            <h2>Login</h2>
+            <form>
+                <input type="text" placeholder="Usuário" required>
+                <input type="password" placeholder="Senha" required>
+                <button type="button" onclick="nextSection('userType')">Entrar</button>
+            </form>
+        </section>
+        
+        <!-- Etapa 2: Tipo de Usuário -->
+        <section id="userType" class="hidden">
+            <h2>Tipo de Usuário</h2>
+            <form>
+                <label><input type="radio" name="userType" value="Pessoa Física"> Pessoa Física</label>
+                <label><input type="radio" name="userType" value="Pessoa Jurídica"> Pessoa Jurídica</label>
+                <button type="button" onclick="nextSection('userDetails')">Próximo</button>
+            </form>
+        </section>
+        
+        <!-- Etapa 3: Dados do Cliente -->
+        <section id="userDetails" class="hidden">
+            <h2>Dados do Cliente</h2>
+            <form>
+                <input type="text" placeholder="Nome Completo" required>
+                <input type="tel" placeholder="Telefone" required>
+                <input type="email" placeholder="E-mail" required>
+                <input type="text" placeholder="Endereço" required>
+                <input type="text" placeholder="Estado Civil" required>
+                <input type="text" placeholder="Profissão" required>
+                <button type="button" onclick="nextSection('energySimulator')">Próximo</button>
+            </form>
+        </section>
+        
+        <!-- Etapa 4: Simulador de Energia -->
+        <section id="energySimulator" class="hidden">
+            <h2>Simulador de Energia</h2>
+            <input type="range" min="250" max="40000" value="250" id="energyRange" oninput="calculateEnergy()">
+            <p>Consumo: <span id="energyValue">250</span> kWh</p>
+            <p>Resultado: R$ <span id="energyResult">45</span></p>
+            <button type="button" onclick="nextSection('verification')">Próximo</button>
+        </section>
+        
+        <!-- Etapa 5: Verificação -->
+        <section id="verification" class="hidden">
+            <h2>Verificação</h2>
+            <p>Estamos avaliando as informações financeiras antes de concluir...</p>
+            <button type="button" onclick="nextSection('uploadDocuments')">Próximo</button>
+        </section>
+        
+        <!-- Etapa 6: Upload de Documentos -->
+        <section id="uploadDocuments" class="hidden">
+            <h2>Upload de Documentos</h2>
+            <input type="file" multiple required>
+            <button type="button" onclick="completeProcess()">Concluir</button>
+        </section>
+        
+        <!-- Conclusão -->
+        <section id="success" class="hidden">
+            <h2>Processo Concluído</h2>
+            <p>A adesão foi realizada e autorizada com sucesso!</p>
+        </section>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
